@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  Text {
+    @apply font-karla;
+  }
+}
+
+.h1__title {
+  @apply text-2xl font-bold text-secondary
+}
+.login {
+  @apply flex flex-col justify-center gap-8 text-secondary;
+}
+
+.login__p {
+  @apply flex items-center gap-4;
+}
+
+.button { @apply flex justify-center items-center cursor-pointer bg-primary text-background font-bold rounded-md; }
+
+.input {
+  @apply bg-tertiary w-full h-14 text-secondary pl-12 pr-12 rounded-lg border border-gray-600
+}
+
+.icon__password {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 p-1;
+}
+
+.button {
+  @apply w-10/12 bg-primary px-6 py-3 rounded-md items-center;
+}
+
+.button__text {
+  @apply text-background text-lg font-bold;
+}
+
+.principal {
+  @apply flex-1 justify-center bg-black;
+}
+
+.principal__container {
+  @apply flex-1 justify-center gap-8;
+}
+
+.infoExercise__subtitle {
+  @apply text-xl font-semibold text-secondary mb-4;
+}
