@@ -1,8 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
-
-// hay que crear .env.docker y .env.production
-console.log("API_URL usado:", import.meta.env.VITE_API_URL);
-
+import { API_URL } from "./API_URL.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function login(email, password) {
   const response = await fetch(`${API_URL}/auth/login`, {
@@ -17,7 +14,7 @@ export async function login(email, password) {
 
   const data = await response.json()
 
-  localStorage.setItem("token", data.token);
+  await AsyncStorage.setItem("token", data.token);
   // console.log("Token guardado en localStorage:", data.token);
 
   return data;
@@ -48,9 +45,12 @@ export async function getUserName(uuid) {
     }
   });
 
+  const text = await response.text();
+  console.log("Texto de respuesta:", text);
+
   if (!response.ok) {
-    throw new Error('Error al obtener el nombre del usuario');
+    throw new Error(`Error ${response.status}: ${text}`)
   }
 
-  return response.text();
+  return JSON.parse(text)
 }
