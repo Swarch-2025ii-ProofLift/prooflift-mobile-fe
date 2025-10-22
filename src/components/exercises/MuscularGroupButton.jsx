@@ -1,6 +1,10 @@
+// ...existing code...
 import { TouchableOpacity, Text } from "react-native"
 
-function MuscularGroupButton({ groupName, isSelected = false, onClick }) {
+function MuscularGroupButton({ groupName, isSelected = false, onClick, onPress }) {
+  // allow both names for backwards compat
+  const handlePress = onPress ?? onClick;
+
   return (
     <TouchableOpacity
       className={`w-24 h-10 rounded-2xl justify-center items-center ${
@@ -8,8 +12,8 @@ function MuscularGroupButton({ groupName, isSelected = false, onClick }) {
           ? 'bg-background-secondary' 
           : 'bg-primary'
       }`}
-      onPress={() => onClick?.(groupName)}
-      activeOpacity={0.7}  // ✅ Efecto al presionar
+      onPress={() => handlePress?.(groupName)}
+      activeOpacity={0.7}
     >
       <Text 
         className={`font-bold ${
@@ -25,3 +29,4 @@ function MuscularGroupButton({ groupName, isSelected = false, onClick }) {
 }
 
 export { MuscularGroupButton }
+// ...existing code...

@@ -78,7 +78,7 @@ function SignUp() {
             />
         </FormInput>
         <NavigateLogin text={"¿Ya tienes una cuenta?"} 
-        linkText={"Inicia sesión"} link={"Exercises"} />
+        linkText={"Inicia sesión"} link={"Login"} />
         </View>
     </KeyboardAvoidingView>
   )
