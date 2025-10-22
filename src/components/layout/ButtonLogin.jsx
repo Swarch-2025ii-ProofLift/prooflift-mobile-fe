@@ -1,9 +1,16 @@
 import { Text, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
-function ButtonLogin({icon, text}) {
+function ButtonLogin({icon, text, link}) {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate(link);
+  };
+
   return (
-    <TouchableOpacity className="flex flex-col items-center justify-center">
+    <TouchableOpacity className="flex flex-col items-center justify-center" onPress={handlePress}>
         <FontAwesome5 
         name={icon} 
         size={26} 

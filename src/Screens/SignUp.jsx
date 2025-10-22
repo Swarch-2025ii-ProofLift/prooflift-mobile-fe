@@ -1,13 +1,16 @@
-import { Text, View } from 'react-native';
+import { View, KeyboardAvoidingView, Platform } from 'react-native';
 import logo from '../../assets/Images/icono-white.png'
 
 import { TitleLogin } from '../components/login/TitleLogin.jsx'
 import { FormInput } from '../components/login/FormInput.jsx'
 import { InputCamp } from '../components/login/InputCamp.jsx'
 import { NavigateLogin } from '../components/login/NavigateLogin.jsx'
-// import { login } from '../API/auth.js'
+import { signup } from '../API/auth.js'
+import { useNavigation } from '@react-navigation/native';
+
 
 function SignUp() {
+  const navigation = useNavigation();
 
   const handleSignUp = async (data, setButtonContent) => {
     try {
@@ -15,7 +18,7 @@ function SignUp() {
       setButtonContent('Creando cuenta...')
 
       const result = await signup(data.nombre, data.email, data.password)
-      setTimeout(() => navigate('/'), 2000)
+      setTimeout(() => navigation.navigate('Login'), 2000)
 
     } catch (error) {
       console.error("Error en el registro:", error)
@@ -23,11 +26,14 @@ function SignUp() {
   }
 
   return (
-    <View className='principal'>
-        <View className='principal__container'>
-            <TitleLogin
-              title='Crear tu cuenta'
-              imgLink={logo}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      className='principal'
+    >
+      <View className='principal__container'>
+        <TitleLogin
+          title='Crear tu cuenta'
+          imgLink={logo}
               statement='Únete y empieza a transformar tu cuerpo'
             />
         <FormInput buttonText='Crear cuenta' onSubmit={handleSignUp}>
@@ -72,9 +78,9 @@ function SignUp() {
             />
         </FormInput>
         <NavigateLogin text={"¿Ya tienes una cuenta?"} 
-        linkText={"Inicia sesión"} link={"Exercises"} />
+        linkText={"Inicia sesión"} link={"Login"} />
         </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
