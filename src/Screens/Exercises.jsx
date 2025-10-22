@@ -97,10 +97,13 @@ function Exercises() {
   //Renderizar cada ejercicio
   const renderExerciseItem = ({ item }) => (
     <ExerciseCard
+      id={item.id || item._id}
       title={item.name || "Ejercicio sin nombre"}
       bodyPart={item.group || "Sin grupo"}
     />
   );
+
+  
 
   //Footer del FlatList (indicador de carga)
   const renderFooter = () => {

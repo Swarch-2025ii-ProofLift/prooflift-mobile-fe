@@ -21,7 +21,7 @@ export const exercisesAPI = {
 
   async getExercise(id) {
     const url = `${API_URL_SUGGEST}/exercises/${id}`;
-    console.log("📡 Fetching detail:", url);
+    // console.log("📡 Fetching detail:", url);
 
     const response = await fetch(url);
     if (!response.ok) {
