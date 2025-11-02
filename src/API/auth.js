@@ -2,7 +2,7 @@ import { API_URL } from "./API_URL.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function login(email, password) {
-  const response = await fetch(`${API_URL}/auth/login`, {
+  const response = await fetch(`${API_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -21,7 +21,7 @@ export async function login(email, password) {
 }
 
 export async function signup(nombre, email, password) {
-  const response = await fetch(`${API_URL}/auth/register`, {
+  const response = await fetch(`${API_URL}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ nombre, email, password })
@@ -37,7 +37,7 @@ export async function signup(nombre, email, password) {
 export async function getUserName(uuid) {
   const token = localStorage.getItem("token");
   
-  const response = await fetch(`${API_URL}/auth/user/${uuid}`, {
+  const response = await fetch(`${API_URL}/user/${uuid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
